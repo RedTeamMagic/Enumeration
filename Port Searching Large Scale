@@ -1,0 +1,48 @@
+Nmap: more thorough
+'nmap -sT -n -iL iplist.txt -p80 --max-retries=3 --excludefile ./sensitiveips.txt -oA ./port80/iplist80.txt
+
+-n does not perform dns look up, speeds up scan
+-iL input list of ips/vlans
+-p port to scan
+--max-retries limits the number of retries if a port is not responsive (default value is 10)
+--excludefile is ips to exclude from scan
+-oA outputs in all formats. Make sure to use this flag so we don't have to keep redoing scans
+ -sT Full tcp connection, ensures that the connections close
+
+Additionally the -T flag can be specified for the intensity of the scan
+-T paranoid|sneaky|polite|normal|aggressive|insane
+paranoid (0), sneaky (1), polite (2), normal (3), aggressive (4), and insane (5)
+
+Masscan: quick and dirty
+'masscan -iL allvlans.txt -p80 --rate=10000 -oG allvlan80.txt'
+
+Eyewitness: get a visual
+'eyewitnes --web -f /opt/eyewintess/shodan80.txt -d ./port80 --max-retries 0 --timout 7'
+
+Interesting ports to go after:
+Web:
+80,8080,443,8443,8000
+
+Java RMI: 
+1090, 1098, 1099, 4444, 11099, 47001, 47002, 10999
+
+Weblogic: 
+7000-7004, 8000-8003, 9503, 7070, 7071
+
+JDWP: 
+45000, 45001
+
+JMX: 
+8686, 9012, 50500
+
+GlassFish:
+4848
+
+jBoss: 
+11111, 4444, 4445
+
+Cisco Smart Install: 
+4786
+
+HP Data Protector: 
+5555, 5556
