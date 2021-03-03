@@ -17,7 +17,7 @@ Masscan: quick and dirty
 'masscan -iL allvlans.txt -p80 --rate=10000 -oG allvlan80.txt'
 
 Eyewitness: get a visual
-'eyewitnes --web -f /opt/eyewintess/shodan80.txt -d ./port80 --max-retries 0 --timout 7'
+'eyewitnes --web -f /opt/eyewintess/shodan80.txt -d ./port80 --max-retries 0 --timout 7 --prepend-https'
 
 Interesting ports to go after:
 Web:
