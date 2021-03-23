@@ -17,7 +17,11 @@ Masscan: quick and dirty
 'masscan -iL allvlans.txt -p80 --rate=10000 -oG allvlan80.txt'
 
 Eyewitness: get a visual
-'eyewitnes --web -f /opt/eyewintess/shodan80.txt -d ./port80 --max-retries 0 --timout 7 --prepend-https'
+'eyewitness --web -f /opt/eyewintess/shodan80.txt -d ./port80 --max-retries 0 --timeout 7 --prepend-https'
+
+Scrying Scan
+nmap -iL ips.txt --excludefile exclude.txt -n -p 80,443,8080,8443,3389 -oX targets.xml
+scrying --nmap targets.xml --web-proxy socks4://127.0.0.1:7777   
 
 Interesting ports to go after:
 Web:
