@@ -22,6 +22,9 @@ cat common_web_ports.xml | .\aquatone.exe -nmap -chrome-path "C:\Program Files\G
 *InveighZero*
 C# man-in-the-middle spoof LLMNR,NBNS,mDNS,DNS, and DHCPv6.
 
+*responder*
+sudo /usr/sbin/responder -I eth0
+
 *Bloodhound*
 Check unrolled RDP rights for all compromised users
 
