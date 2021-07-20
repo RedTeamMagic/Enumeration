@@ -5,8 +5,8 @@ Initial Host Discovery
 
 SMB Common Vuln Checks
 ---------------------------------------------------------------
-`--script smb-vuln-ms17-010`
-  `--script smb-vuln-ms08-067`
+`--script smb-vuln-ms17-010`  
+`--script smb-vuln-ms08-067`
 
 
 Additional Host Discovery - Recheck
