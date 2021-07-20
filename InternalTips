@@ -10,6 +10,9 @@ sudo nmap -sP -PU161 192.168.2.1/24
 
 sudo nmap -sP -PS21,22,80,139,445,3389
 
+Speedy check for .1
+sudo nmap -sn 10.0-255.0-255.1 -PE —min-hostgroup 10000 —min-rate 10000
+
 *Common RCE Ports*
 nmap -oA commonRCE -iL live_hosts.txt -p 1090,1098,1099,4444,11099,47001,47002,10999,7000-7004,8000-8003,9000-9003,9503,7070,7071,45000,45001,8686,9012,50500,4848,11111,4445,4786,5555,5556 --open
 
