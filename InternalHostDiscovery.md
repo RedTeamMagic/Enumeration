@@ -12,8 +12,8 @@ SMB Common Vuln Checks
 Additional Host Discovery - Recheck
 ---------------------------------------------------------------
 
-`nmap -sP -PA21,22,25,3389 192.168.2.1/24`
-`sudo nmap -sP -PS22,3389 192.168.2.1/24`
+`nmap -sP -PA21,22,25,3389 192.168.2.1/24`  
+`sudo nmap -sP -PS22,3389 192.168.2.1/24`  
 `sudo nmap -sP -PU161 192.168.2.1/24` 
 
 Host Discovery of 6 most common ports
@@ -44,7 +44,7 @@ Cut results from RMI scan to 'Open' ports:
 
 NMAP common port scan:
 --------------------------------------------------------------------------
-`nmap -Pn -n -p 22,25,53,80,443,445,1433,3306,3389,5800,5900,8080,8443  -iL hosts/targets.txt -oA services/quick-sweep`
+`nmap -Pn -n -p 22,25,53,80,443,445,1433,3306,3389,5800,5900,8080,8443 -iL hosts/targets.txt -oA services/quick-sweep`
 
 
 NMAP Scan all ports:
