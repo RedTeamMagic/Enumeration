@@ -10,8 +10,35 @@ sudo nmap -sP -PU161 192.168.2.1/24
 
 sudo nmap -sP -PS21,22,80,139,445,3389
 
-Speedy check for .1
+Fast Live host discovery trick (checks only .1 on subnet):
+---------------------------------------------------------------
 sudo nmap -sn 10.0-255.0-255.1 -PE —min-hostgroup 10000 —min-rate 10000
+(Then do normal fast discovery on confirmed subnet)
+Discover banners:
+    curl -head ip or hostname
+
+NMAP ping sweep:
+----------------------------------------------
+sudo nmap -sn -iL discovery/ranges.txt -oA discovery/hosts/pingsweep -PE
+
+NMAP quick RMI discovery scan:
+-------------------------------------------
+nmap -Pn -n -p 22,80,443,3389,2222 -iL discovery/ranges.txt  -oA discovery/hosts/rmisweep —min-hostgroup 256 —min-rate 1280
+
+Cut results from RMI scan to 'Open' ports: cat discovery/hosts/rmisweep.gnmap |grep open | cut -d " " -f2
+
+NMAP common port scan:
+--------------------------------------------------------------------------
+nmap -Pn -n -p 22,25,53,80,443,445,1433,3306,3389,5800,5900,8080,8443  -iL hosts/targets.txt -oA services/quick-sweep
+
+NMAP Scan all ports:
+---------------------------
+nmap -Pn -n -iL targets.txt -p 0-65535 -sV -A -O -oA filename -min-rate 50000 min-hostgroup 22
+
+To find out which NMAP .NSE script ran from above:
+--------------------------------------------------
+cat services/full-sweep.nmap |grep '|_' | cut -d '_' -f2 | cut -d ' ' -f1 | sort -u | grep ':'
+for just HTTP targets: cat full-sweep.nmap | grep -i http-title
 
 *Common RCE Ports*
 nmap -oA commonRCE -iL live_hosts.txt -p 1090,1098,1099,4444,11099,47001,47002,10999,7000-7004,8000-8003,9000-9003,9503,7070,7071,45000,45001,8686,9012,50500,4848,11111,4445,4786,5555,5556 --open
