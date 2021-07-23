@@ -23,10 +23,20 @@ Host Discovery of 6 most common ports
 
 Fast Live host discovery trick (checks only .1 on subnet):
 ---------------------------------------------------------------
-`sudo nmap -sn 10.0-255.0-255.1 -PE —min-hostgroup 10000 —min-rate 10000`
+`sudo nmap -sn 10.0-255.0-255.1 -PE —min-hostgroup 10000 —min-rate 10000 -oA first`
 (Then do normal fast discovery on confirmed subnet)
 Discover banners:
     `curl -head ip or hostname`
+
+Sorting the Output
+----------------------------------------------
+`cat first.gnmap | grep "Status: Up" | cut -d " " -f 2 | sort -u > ranges.txt`  
+Vim to add slash /24  
+`:%s/$/\/24/g`
+
+`sudo nmap -oA all_live_hosts --stats-every 60s --log-errors --traceroute --reason --randomize-hosts -v -R -PE -PP -PM -PO -PU -PY 80,23,443,21,22,25,3389,110,445,139,53,135,3306,8080,1723,111,995,93,5900,1025,587,8888,199,1720,465,548,113,81,6001,10000,514,5060,179,1026,2000,8443,8000,32768,554,26,1433,49152,2001,515,8008,49154,1027,5666,646 -PA  80,23,443,21,22,25,3389,110,445,139,53,135,3306,8080,1723,111,995,93,5900,1025,587,8888,199,1720,465,548,113,81,6001,10000,514,5060,179,1026,2000,8443,8000,32768,554,26,1433,49152,2001,515,8008,49154,1027,5666,646 -sS -sV -p 21,22,23,25,80,443,445,8080,8443 -iL ranges.txt`
+How many live? :  
+
 
 
 NMAP ping sweep:
