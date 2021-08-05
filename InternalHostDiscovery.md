@@ -90,5 +90,6 @@ Common Web Ports
 
 Using Aquatone to visualize
 ---------------------------------------------------------------
-`cat common_web_ports.xml | .\aquatone.exe -nmap -chrome-path "C:\Program Files\Google\Chrome\Application\Chomre.exe" -out C:\Users\Magic\Desktop\aquatone`
+`cat common_web_ports.xml | .\aquatone.exe -nmap -chrome-path "C:\Program Files\Google\Chrome\Application\Chomre.exe" -out C:\Users\Magic\Desktop\aquatone`  
+`cat live_hosts.gnmap | aquatone -ports 80,443,8080,8443`  
 
