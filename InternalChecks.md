@@ -53,3 +53,7 @@ Connect and explore through smbclient
 Mount open share locally  
 `sudo mount //x.x.x.x/share /mnt/share`
 
+Proxychains ssh
+---------------------------------------------------------------
+`ssh -L 7777:localhost:7777 username@hostname.com`  
+`ssh -ND 7777 username@localhost`
