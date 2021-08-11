@@ -1,5 +1,7 @@
 Bloodhound From Kali
 ---------------------------------------------------------------
+`sudo pip3 install bloodhound`  
+
 `bloodhound-python -u adusername -d domain.corp -v -c dconly -ns x.x.x.x`  
 `bloodhound-python -u adusername -d domain.corp -v -c all -ns x.x.x.x`
 
