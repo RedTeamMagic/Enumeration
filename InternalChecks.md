@@ -62,4 +62,4 @@ Proxychains ssh
 
 Invoke Share Finder
 ---------------------------------------------------------------
-`Invoke-ShareFinder -CheckShareAccess -ExcludeStandard -ExcludePrint -ExcludeIPC -Verbose | Out-File -Encoding ASCII`  
+`Invoke-ShareFinder -CheckShareAccess -ExcludeStandard -ExcludePrint -ExcludeIPC -Verbose | Out-File -Encoding ASCII shareaccess.txt`  
