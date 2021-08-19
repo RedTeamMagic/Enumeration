@@ -59,3 +59,7 @@ Proxychains ssh
 ---------------------------------------------------------------
 `ssh -L 7777:localhost:7777 username@hostname.com`  
 `ssh -ND 7777 username@localhost`
+
+Invoke Share Finder
+---------------------------------------------------------------
+`Invoke-ShareFinder -CheckShareAccess -ExcludeStandard -ExcludePrint -ExcludeIPC -Verbose | Out-File -Encoding ASCII`  
