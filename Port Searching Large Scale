@@ -19,10 +19,13 @@ Masscan: quick and dirty
 Eyewitness: get a visual
 `eyewitness --web -f /opt/eyewintess/shodan80.txt -d ./port80 --max-retries 0 --timeout 7 --prepend-https --proxy-ip 127.0.0.1 --proxy-port 7777 --proxy-type socks4`
 
-
 Scrying Scan
 nmap -iL ips.txt --excludefile exclude.txt -n -p 80,443,8080,8443,3389 -oX targets.xml
 scrying --nmap targets.xml --web-proxy socks4://127.0.0.1:7777   
+
+Quick scan?
+map -p445 -n -iL full_scope.txt -oA 445_open_notpnscan --open -P0 --max-retries=3 --max-rtt-timeout 100ms
+
 
 Interesting ports to go after:
 Web:
